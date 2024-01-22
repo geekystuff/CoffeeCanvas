@@ -1,0 +1,333 @@
+﻿@*@using CoffeeCanvas.ViewModels;
+@{
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Coffee Canvas - Your Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        
+        body {
+            background-color: #f9f5f2; 
+        }
+
+        .cart-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cart-title {
+            font-size: 36px;
+            color: #795548; 
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #795548; 
+            margin: 20px 0;
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 10px;
+            border: 1px solid #795548; 
+        }
+
+        .cart-table th {
+            background-color: #795548; 
+            color: #fff;
+        }
+
+        .cart-table td {
+            text-align: center;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 20px;
+            color: #795548; 
+        }
+        #place-order-button {
+            background-color: #795548;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            /*float: right;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cart-header">
+            <h1 class="cart-title">Your Cart</h1>
+        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">Item Name</th>
+                    <th style="text-align:center;">Quantity</th>
+                    <th style="text-align:center;">Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ItemName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.TotalPrice</td>
+                        
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+        @if (Model.Count>0)
+    {
+        <p class="cart-total">Total Price: $@ViewBag.TotalPrice</p>
+        <button id="place-order-button">Place Order and Pay</button>
+    }
+         
+        
+        
+    </div>
+</body>
+</html>*@
+@*@using CoffeeCanvas.ViewModels
+@model List<CartItemViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Coffee Canvas - Your Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        body {
+            background-color: #f9f5f2;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cart-title {
+            font-size: 36px;
+            color: #795548;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #795548;
+            margin: 20px 0;
+        }
+
+            .cart-table th, .cart-table td {
+                padding: 10px;
+                border: 1px solid #795548;
+            }
+
+            .cart-table th {
+                background-color: #795548;
+                color: #fff;
+            }
+
+            .cart-table td {
+                text-align: center;
+            }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 20px;
+            color: #795548;
+        }
+
+        #place-order-button {
+            background-color: #795548;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            /*float: right;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cart-header">
+            <h1 class="cart-title">Your Cart</h1>
+        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">Item Name</th>
+                    <th style="text-align:center;">Quantity</th>
+                    <th style="text-align:center;">Price</th>
+                    <th style="text-align:center;">Actions</th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ItemName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.TotalPrice</td>
+                        <td>
+                            <a href="@Url.Action("RemoveFromCart", "Cart", new { menuId = item.MenuId })">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (Model.Count > 0)
+        {
+            <p class="cart-total">Total Price: $@ViewBag.TotalPrice</p>
+            <button id="place-order-button">Place Order and Pay</button>
+        }
+    </div>
+</body>
+</html>*@
+
+@{
+    Layout = "_Layout";
+}
+@using CoffeeCanvas.ViewModels
+@model List<CartItemViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Coffee Canvas - Your Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        body {
+            background-color: #f9f5f2;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cart-title {
+            font-size: 36px;
+            color: #795548;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #795548;
+            margin: 20px 0;
+        }
+
+            .cart-table th, .cart-table td {
+                padding: 10px;
+                border: 1px solid #795548;
+            }
+
+            .cart-table th {
+                background-color: #795548;
+                color: #fff;
+            }
+
+            .cart-table td {
+                text-align: center;
+            }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 20px;
+            color: #795548;
+        }
+
+        
+
+        #place-order-button {
+            background-color: #795548;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            /*float: right;*/
+
+        }
+
+        .quantity-button {
+            background-color: #808080
+            color: #fff;
+            border: thin;
+            padding: revert-layer;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 2px 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cart-header">
+            <h1 class="cart-title">Your Cart</h1>
+        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">Item Name</th>
+                    <th style="text-align:center;">Quantity</th>
+                    <th style="text-align:center;">Price</th>
+                    <th style="text-align:center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    var item = Model[i];
+                    <tr>
+                        <td>@item.ItemName</td>
+                        <td>
+                            <button class="quantity-button" data-menuid="@item.MenuId" data-operation="subtract">-</button>
+                            <span>@item.Quantity</span>
+                            <button class="quantity-button" data-menuid="@item.MenuId" data-operation="add">+</button>
+                        </td>
+
+
+                        <td>@item.TotalPrice</td>
+                        <td>
+                            <a href="@Url.Action("RemoveFromCart", "Cart", new { menuId = item.MenuId })">
+                                <span style="font-size: 20px; color: black;">✖</span>
+                            </a>
+
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (Model.Count > 0)
+        {
+            <p class="cart-total">Total Price: $<span id="total-amount">@ViewBag.TotalPrice</span></p>
+            <button id="place-order-button">Place Order and Pay</button>
+        }
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

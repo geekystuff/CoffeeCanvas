@@ -1,0 +1,118 @@
+﻿
+@model List<Menu>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Coffee Canvas - Menu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       
+        body {
+            background-color: #f9f5f2; 
+        }
+
+        .menu-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .menu-title {
+            font-size: 36px;
+            color: #795548; 
+        }
+
+        .menu-form {
+            margin-bottom: 30px;
+        }
+
+        .menu-category-label {
+            font-weight: bold;
+        }
+
+        .menu-category-select {
+            width: 100%;
+        }
+
+        .menu-card {
+            width: 15rem;
+            margin: 0 10px 20px 0;
+            background-color: #fff; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .menu-card-title {
+            font-size: 20px;
+            color: #795548;
+        }
+
+        .menu-card-description {
+            font-style: italic;
+            color: #444;
+        }
+
+        .menu-card-price {
+            color: #795548; 
+            font-weight: bold;
+        }
+
+        .menu-go-button {
+            background-color: #795548;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu-header">
+            <h1 class="menu-title">The Coffee Canvas</h1>
+        </div>
+        <h2>Menu</h2>
+        <form method="post" class="menu-form form-inline">
+            <div class="form-group mr-3">
+                <label for="categoryId" class="menu-category-label"></label>
+                <select id="categoryId" name="categoryId" class="menu-category-select form-control">
+                    <option value="">Select Category</option>
+                    <option value="1">Espresso-Based Drinks</option>
+                    <option value="2">Brewed Coffee</option>
+                    <option value="3">Iced Coffee</option>
+                    <option value="4">Specialty Coffee</option>
+                    <option value="5">Tea and Other Beverages</option>
+                </select>
+            </div>
+            <button type="submit" class="btn menu-go-button">GO</button>
+        </form>
+        @if (Model != null && Model.Any())
+        {
+            <h3>Beverages in Selected Category</h3>
+            <div class="w-100 d-flex flex-wrap">
+                @foreach (var coffeeDetail in Model)
+                {
+                    <div class="card menu-card">
+                        <img src="/Images/@coffeeDetail.ImageFileName" class="card-img-top" alt=" ">
+                        <div class="card-body">
+                            <h4 class="menu-card-title">@coffeeDetail.CoffeeName</h4>
+                            <p class="card-text menu-card-description">
+                                <b>Description:</b> @coffeeDetail.Description <br />
+                                <b class="menu-card-price">Price: @coffeeDetail.Price</b>
+                            </p>
+                            <input id="coffee-id" type="hidden" value="@coffeeDetail.MenuId">
+                            <button data-menuid="@coffeeDetail.MenuId" class="coffee-add-cart btn menu-go-button">Add to cart</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Welcome to your very own - THE COFFEE CANVAS";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background-container {
+            position: relative; 
+            background-image: url('/Images/coffeecanvas.jpg'); 
+            background-size: cover;
+            opacity: 0.7;
+            height: 100vh; 
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 20%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            color: black; 
+            font-weight: bold; 
+            
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+        }
+
+        
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        
+    </nav>
+    <div class="background-container">
+        <div class="text-overlay">
+            <h1 class="display-4">Welcome to your very own...<br /><i>THE COFFEE CANVAS!</i></h1>
+            <p> Crafting Your Coffee Journey, Every Sip a Masterpiece.</p>
+            
+        </div>
+       
+            
+    </div>
+</body>
+</html>
