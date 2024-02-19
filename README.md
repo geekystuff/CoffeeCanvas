@@ -17,20 +17,10 @@ View: The user interface component of the application. It presents data to users
 Controller: Acts as an intermediary between the Model and the View. It handles user requests, processes data from the Model, and updates the View accordingly.
 
 ## Technologies Used
-Frontend: HTML, CSS, JavaScript
-Backend: Node.js, Express.js
+Frontend: HTML, CSS, JavaScript, JQuery
+Backend: ASP.NET Core
 Database: SQL Server
-ORM (Object-Relational Mapping): [Insert ORM framework/library if applicable]
-Authentication: [Insert authentication mechanism/library used]
-
-## Setup
-To set up the Coffee Shop Web Application locally, follow these steps:
-
-Clone the repository: git clone https://github.com/your-username/coffee-shop-app.git
-Navigate to the project directory: cd coffee-shop-app
-Install dependencies: npm install
-Configure the SQL Server database connection.
-Start the application: npm start
+ORM (Object-Relational Mapping): Entity Framework Core
 
 ## Usage
 Register or log in to your account.
